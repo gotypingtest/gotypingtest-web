@@ -84,6 +84,10 @@ function Footer() {
                             </div>
                         </div>
                     </div>
+                    <div className={`col-md-12 ${mainFooterCss.websitefooterrights}`}>
+                        <span>© 2024 <Link href={'/'}>GOTypingTest.com</Link> All rights reserved.</span>
+                        <span><Link href={'/'}>Legal</Link> <Link href={'/'}>Sitemap</Link></span>
+                    </div>
                 </div>
             </div>
         </div>

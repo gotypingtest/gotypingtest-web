@@ -10,7 +10,7 @@ export default function Home() {
             <div className="row">
               <div className="col-lg-5 col-md-12">
                 <div className={mainHomePage.homePageContent}>
-                  <h1>Learn to Type Faster <br/><span>& Earn Real Rewards</span></h1>
+                  <h1>Learn to Type Faster <span>& Earn Real Rewards</span></h1>
                   <p>Join live typing contests, compete with thousands of typists across India, and win real cash rewards. Practice for government exams too!</p>
                   <div className={mainHomePage.homePageButtons}>
                       <Link className={mainHomePage.buttonJoin} href={'/'}><i className="fa-solid fa-trophy"></i>Join Contests</Link>
@@ -34,7 +34,7 @@ export default function Home() {
                       </span>
                     </li>
                     <li>
-                      <Image src="/images/for-students.png" alt="student features" height={200} width={200}/>
+                      <Image src="/images/for-educators.png" alt="student features" height={200} width={200}/>
                       <span>
                          <h3>For Educators</h3>
                          <p>Join millions of GoTypingTest.com users and learn to type at your own pace with gamified lessons and student-led progression.</p>
@@ -79,9 +79,9 @@ export default function Home() {
               </div>
               <ul>
                 <li>
-                  <small><i className="fa-solid fa-trophy"></i></small>
-                  <strong>Live Contests</strong>
-                  <p>Participate in real-time typing contests with players worldwide. Win cash prizes instantly.</p>
+                  <small><i className="fa-solid fa-graduation-cap"></i></small>
+                  <strong>Exam Practice</strong>
+                  <p>Practice for SSC, RRB, DSSSB, BSF and other government typing exams.</p>
                 </li>
                 <li>
                   <small><i className="fa-solid fa-chart-line"></i></small>
@@ -104,9 +104,9 @@ export default function Home() {
                   <p>Advanced anti-cheat system ensures fair play for everyone. Verified results.</p>
                 </li>
                 <li>
-                  <small><i className="fa-solid fa-graduation-cap"></i></small>
-                  <strong>Exam Practice</strong>
-                  <p>Practice for SSC, RRB, DSSSB, BSF and other government typing exams.</p>
+                  <small><i className="fa-solid fa-trophy"></i></small>
+                  <strong>Live Contests</strong>
+                  <p>Participate in real-time typing contests with players worldwide. Win cash prizes instantly.</p>
                 </li>
               </ul>
             </div>
@@ -182,17 +182,17 @@ export default function Home() {
                     </span>
                   </div>
                   <div className={mainHomePage.homeContestsItemFourCss}>
-
+                      <Link href={'/'}>Join Now</Link>
                   </div>
                 </li>
                 <li>
                   <div className={mainHomePage.homeContestsItemTopCss}>
                   <span>Live</span>
-                  <abbr>5 Min .English</abbr>
+                  <abbr>10 Min .English</abbr>
                   </div>
                   <div className={mainHomePage.homeContestsItemSecondCss}>
-                  <strong>Speed Blitz</strong>
-                  <span><i className="fa-solid fa-indian-rupee-sign"></i>500 <small>Prize Pool</small></span>
+                  <strong>Accuracy Battle</strong>
+                  <span><i className="fa-solid fa-indian-rupee-sign"></i>800 <small>Prize Pool</small></span>
                   <abbr>Entry: <b><i className="fa-solid fa-indian-rupee-sign"></i>20</b><small>25/50 joined</small></abbr>
                   </div>
                   <div className={mainHomePage.homeContestsItemThirdCss}>
@@ -210,17 +210,17 @@ export default function Home() {
                     </span>
                   </div>
                   <div className={mainHomePage.homeContestsItemFourCss}>
-                    
+                    <Link href={'/'}>Join Now</Link>
                   </div>
                 </li>
                 <li>
                   <div className={mainHomePage.homeContestsItemTopCss}>
                   <span>Live</span>
-                  <abbr>5 Min .English</abbr>
+                  <abbr>15 Min .English</abbr>
                   </div>
                   <div className={mainHomePage.homeContestsItemSecondCss}>
-                  <strong>Speed Blitz</strong>
-                  <span><i className="fa-solid fa-indian-rupee-sign"></i>500 <small>Prize Pool</small></span>
+                  <strong>Pro Typist League</strong>
+                  <span><i className="fa-solid fa-indian-rupee-sign"></i>1500 <small>Prize Pool</small></span>
                   <abbr>Entry: <b><i className="fa-solid fa-indian-rupee-sign"></i>20</b><small>25/50 joined</small></abbr>
                   </div>
                   <div className={mainHomePage.homeContestsItemThirdCss}>
@@ -238,11 +238,90 @@ export default function Home() {
                     </span>
                   </div>
                   <div className={mainHomePage.homeContestsItemFourCss}>
-                    
+                    <Link href={'/'}>Join Now</Link>
                   </div>
                 </li>
               </ul>
             </div>
+          </div>
+        </div>
+        <div className={mainHomePage.homeLeaderboardCss}>
+          <div className="container">
+            <div className="row">
+              <div className={mainHomePage.homeLeaderboardHeadCss}>
+                <small>Leaderboard</small>
+                <h2>Top Typists <span>This Week</span></h2>
+              </div>
+              <div className="col-lg-6 col-md-6">
+                  <ul className={mainHomePage.homeLeaderboardListCss}>
+                    <li>
+                        <div className={mainHomePage.homeNameListCss}>
+                          <small>1</small>
+                          <strong>Ram Kumar</strong>
+                        </div>
+                        <div className={mainHomePage.homeRecordsLettersCss}>
+                          <small>96%</small>
+                          <strong>120 WPM</strong>
+                        </div>
+                    </li>
+                    <li>
+                        <div className={mainHomePage.homeNameListCss}>
+                          <small>2</small>
+                          <strong>Ravi Yadav</strong>
+                        </div>
+                        <div className={mainHomePage.homeRecordsLettersCss}>
+                          <small>90%</small>
+                          <strong>100 WPM</strong>
+                        </div>
+                    </li>
+                    <li>
+                        <div className={mainHomePage.homeNameListCss}>
+                          <small>3</small>
+                          <strong>Raghav Verma</strong>
+                        </div>
+                        <div className={mainHomePage.homeRecordsLettersCss}>
+                          <small>80%</small>
+                          <strong>90 WPM</strong>
+                        </div>
+                    </li>
+                    <li>
+                        <div className={mainHomePage.homeNameListCss}>
+                          <small>4</small>
+                          <strong>Rashmi Gaur</strong>
+                        </div>
+                        <div className={mainHomePage.homeRecordsLettersCss}>
+                          <small>78%</small>
+                          <strong>78 WPM</strong>
+                        </div>
+                    </li>
+                    <li>
+                        <div className={mainHomePage.homeNameListCss}>
+                          <small>5</small>
+                          <strong>Ram Kumar</strong>
+                        </div>
+                        <div className={mainHomePage.homeRecordsLettersCss}>
+                          <small>96%</small>
+                          <strong>120 WPM</strong>
+                        </div>
+                    </li>
+                  </ul>
+                  <div className={mainHomePage.homeLeaderboardbuttonCss}>
+                    <Link href={'/'}>View Full Leaderboard <i className="fa-solid fa-arrow-right-long"></i></Link>
+                  </div>
+              </div>
+              <div className="col-lg-6 col-md-6">
+                <div className={mainHomePage.homeLeaderboardImage}>
+                  <Image src="/images/contests-cup.png" alt="student features" height={200} width={200}/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={mainHomePage.homeLearnTypingCss}>
+          <div className="container">
+            <div className="row">
+
+            </div>  
           </div>
         </div>
     </section>

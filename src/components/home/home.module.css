@@ -158,12 +158,14 @@
   padding: 50px 0px;
 }
 .homePageCss .homeFeaturesCss .homeFeaturesHeadCss small,
-.homePageCss .homeWorksCss .homeWorksHeadCss small{
+.homePageCss .homeWorksCss .homeWorksHeadCss small,
+.homePageCss .homeLearnTypingCss .homeLearnTypingHeadCss small,
+.homePageCss .homeTypingRuleCss .homeTypingRuleHeadCss small {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 30px;
-  max-width: 120px;
+  max-width: 140px;
   margin: auto;
   border: 1px solid var(--theme-toggle-border);
   background: var(--theme-toggle-bg);
@@ -176,7 +178,9 @@
 }
 .homePageCss .homeFeaturesCss .homeFeaturesHeadCss h2,
 .homePageCss .homeWorksCss .homeWorksHeadCss h2,
-.homePageCss .homeContestsCss .homeContestsHeadCss .homeContestsLeftCss h2 {
+.homePageCss .homeContestsCss .homeContestsHeadCss .homeContestsLeftCss h2,
+.homePageCss .homeLearnTypingCss .homeLearnTypingHeadCss h2,
+.homePageCss .homeTypingRuleCss .homeTypingRuleHeadCss h2 {
   font-size: 28px;
   font-weight: 800;
   text-align: center;
@@ -185,7 +189,9 @@
 }
 .homePageCss .homeFeaturesCss .homeFeaturesHeadCss h2 span,
 .homePageCss .homeWorksCss .homeWorksHeadCss h2 span,
-.homePageCss .homeContestsCss .homeContestsHeadCss .homeContestsLeftCss h2 span {
+.homePageCss .homeContestsCss .homeContestsHeadCss .homeContestsLeftCss h2 span,
+.homePageCss .homeLearnTypingCss .homeLearnTypingHeadCss h2 span,
+.homePageCss .homeTypingRuleCss .homeTypingRuleHeadCss h2 span {
   color: #00C07A;
 }
 .homePageCss .homeFeaturesCss ul {
@@ -307,6 +313,7 @@
 }
 .homePageCss .homeContestsCss {
   padding: 50px 0px;
+  display: none;
 }
 .homePageCss .homeContestsCss .homeContestsHeadCss {
   display: flex;
@@ -514,6 +521,7 @@
 .homePageCss .homeLeaderboardCss {
   background: #060E20;
   padding: 45px 0px;
+  display: none;
 }
 .homePageCss .homeLeaderboardCss .homeLeaderboardHeadCss small {
   display: flex;
@@ -624,11 +632,164 @@
   max-height:380px;
   box-shadow: 0px 100px 100px #00c07a26;
 }
-
-
-
-
-
+.homePageCss .homeLearnTypingCss {
+  background: #00c07a1a;
+  padding: 50px 0;
+}
+.homePageCss .homeLearnTypingCss .homeLearnTypingHeadCss p{
+  font-size: 14px;
+  text-align: center;
+}
+.homePageCss .homeLearnTypingCss ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 25px;
+}
+.homePageCss .homeLearnTypingCss ul li {
+  width: calc(100% / 4 - 30px);
+  background-color: #DEFFEF;
+  border: 1px solid #B9CBBC;
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    border: 1px solid #00c07a4d;
+    box-shadow: 0 0 20px #00c07a26;
+    transform: translateY(-4px);
+  }
+}
+.homePageCss .homeLearnTypingCss ul li small {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+  margin: auto;
+  background-color: #fff;
+  box-shadow: 0px 3px 10px #ccc;
+  overflow: hidden;
+}
+.homePageCss .homeLearnTypingCss ul li h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+  text-align: center;
+  margin: 0;
+}
+.homePageCss .homeLearnTypingCss ul li a,
+.homePageCss .homeLearnTypingCss .homeLearnTypingallButtonCss a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0076FF;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 30px;
+  box-shadow: 0px 3px 3px #838383;
+  &:hover {
+    color: #cfcfcf;
+  }
+}
+.homePageCss .homeLearnTypingCss .homeLearnTypingallButtonCss a {
+  max-width: 200px;
+  width: 100%;
+  margin: auto;
+  margin-top: 30px;
+  padding: 8px 35px;
+  letter-spacing: 1px;
+  font-size: 14px;
+  box-shadow: 0px 3px 3px #92929261;
+}
+.homePageCss .homeTypingRuleCss {
+  padding: 45px 0px;
+}
+.homePageCss .homeTypingRuleCss .homeTypingRuleHeadCss {
+  margin-bottom: 45px;
+}
+.homePageCss .homeTypingRuleCss .homeTypingRuleHeadCss p {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  font-size: 15px;
+}
+.homePageCss .homeTypingRuleCss .homeTypingRuleImageCss {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.homePageCss .homeTypingRuleCss .homeTypingRuleImageCss img {
+  width: 100%;
+  height: 100%;
+  max-height: 250px;
+}
+.homePageCss .homeTypingRuleCss .homeTypingRuleListCss ul {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.homePageCss .homeTypingRuleCss .homeTypingRuleListCss ul li {
+  background: #111827;
+  border: 1px solid #ffffff14;
+  border-radius: 10px;
+  transition: border-color 0.2s, transform 0.2s;
+  padding: 15px;
+  display: flex;
+  gap: 25px;
+  &:hover {
+    border: 1px solid #00c07a4d;
+    box-shadow: 0 0 20px #00c07a26;
+    transform: translateY(-4px);
+  }
+}
+.homePageCss .homeTypingRuleCss .homeTypingRuleListCss ul li small {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: #3b82f61f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  flex-shrink: 0;
+  color: #dae2fd;
+}
+.homePageCss .homeTypingRuleCss .homeTypingRuleListCss ul li span h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #dae2fd;
+  letter-spacing: 0.8px;
+}
+.homePageCss .homeTypingRuleCss .homeTypingRuleListCss ul li span p {
+  font-size: 13px;
+  margin: 0;
+  color: #cfcfcf;
+}
+.homePageCss .homeTypingRuleCss .homeTypingRuleListCss ul a {
+    color: #000;
+    background: #00c07a;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all .2s ease-in;
+    display: flex;
+    &:hover {
+      color: #fff;
+    }
+}
 
 
 
@@ -647,7 +808,12 @@
 
 
 @media (max-width :1199.9px) {
-
+  .homePageCss .homeLearnTypingCss ul li {
+  width: calc(100% / 3 - 20px);
+}
+.homePageCss .homeLearnTypingCss ul li h3 {
+  font-size: 16px;
+}
 }
 
 
@@ -669,6 +835,18 @@
 .homePageCss .homeContestsCss ul li {
     width: calc(100% / 2 - 20px);
   }
+.homePageCss .homeLearnTypingCss ul li {
+  width: calc(100% / 3 - 20px);
+}
+.homePageCss .homeLearnTypingCss ul li h3 {
+  font-size: 15px;
+}
+.homePageCss .homeLearnTypingCss ul li a {
+  font-size: 13px;
+}
+.homePageCss .homeTypingRuleCss .homeTypingRuleListCss {
+  margin-top: 55px;
+}
 }
 
 @media (max-width :767.9px) {
@@ -678,6 +856,11 @@
   }
   .homePageCss .homeLeaderboardCss .homeLeaderboardImage {
     margin-top: 40px;
+  }
+  .homePageCss .homeLearnTypingCss ul li {
+    width: calc(100% / 2 - 20px);
+    padding: 20px 10px;
+    gap: 15px;
   }
 }
 @media (max-width :575.9px) {
@@ -698,6 +881,20 @@
   }
   .homePageCss .homeContestsCss ul li {
     width: 100%;
+  }
+  .homePageCss .homeLearnTypingCss ul li small {
+    width: 60px;
+    height: 60px;
+  }
+  .homePageCss .homeLearnTypingCss ul li small img {
+    width: 100%;
+    height: 100%;
+    max-width: 45px;
+    max-height: 45px;
+  }
+  .homePageCss .homeLearnTypingCss ul li h3 {
+    /* font-size: 12px; */
+    font-weight: 700;
   }
 }
 @media (max-width :390.9px) {

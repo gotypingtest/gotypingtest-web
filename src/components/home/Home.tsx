@@ -311,7 +311,7 @@ export default function Home() {
               </div>
               <div className="col-lg-6 col-md-6">
                 <div className={mainHomePage.homeLeaderboardImage}>
-                  <Image src="/images/contests-cup.png" alt="student features" height={200} width={200}/>
+                  <Image src="/images/contests-cup.png" alt="Contests features" height={200} width={200}/>
                 </div>
               </div>
             </div>
@@ -320,8 +320,99 @@ export default function Home() {
         <div className={mainHomePage.homeLearnTypingCss}>
           <div className="container">
             <div className="row">
-
+              <div className={mainHomePage.homeLearnTypingHeadCss}>
+                <small>Exam Practice</small>
+                <h2>Practice for <span>Government Exams</span></h2>
+                <p>Prepare for SSC, RRB, DSSSB, Delhi Police and other competitive exams with real exam-style typing tests</p>
+              </div>
+              <ul>
+                <li>
+                  <small><Image src="/images/sscl-png.png" alt="Contests features" height={60} width={60}/></small>
+                  <h3>SSC CHSL TYPING</h3>
+                  <Link href={'/'}>Practice Now</Link>
+                </li>
+                <li>
+                  <small><Image src="/images/rrb-img.png" alt="Contests features" height={60} width={60}/></small>
+                  <h3>RRB NTPC TYPING</h3>
+                  <Link href={'/'}>Practice Now</Link>
+                </li>
+                <li>
+                  <small><Image src="/images/dsssb-img.png" alt="Contests features" height={60} width={60}/></small>
+                  <h3>DSSSB JSA TYPING</h3>
+                  <Link href={'/'}>Practice Now</Link>
+                </li>
+                <li>
+                  <small><Image src="/images/kvs-jsa-img.png" alt="Contests features" height={60} width={60}/></small>
+                  <h3>KVS JSA TYPING</h3>
+                  <Link href={'/'}>Practice Now</Link>
+                </li>
+                <li>
+                  <small><Image src="/images/emrs-img.png" alt="Contests features" height={60} width={60}/></small>
+                  <h3>EMRS JSA TYPING</h3>
+                  <Link href={'/'}>Practice Now</Link>
+                </li>
+                <li>
+                  <small><Image src="/images/bsf-img.png" alt="Contests features" height={60} width={60}/></small>
+                  <h3>BSF HCM TYPING</h3>
+                  <Link href={'/'}>Practice Now</Link>
+                </li>
+                <li>
+                  <small><Image src="/images/delhi-police-img.png" alt="Contests features" height={60} width={60}/></small>
+                  <h3>DELHI POLICE TYPING</h3>
+                  <Link href={'/'}>Practice Now</Link>
+                </li>
+                <li>
+                  <small><Image src="/images/rssb-img.png" alt="Contests features" height={60} width={60}/></small>
+                  <h3>RSSB LDC TYPING</h3>
+                  <Link href={'/'}>Practice Now</Link>
+                </li>
+              </ul>
+                <div className={mainHomePage.homeLearnTypingallButtonCss}>
+                  <Link href={'/'}>View All Exam</Link>
+                </div>
             </div>  
+          </div>
+        </div>
+        <div className={mainHomePage.homeTypingRuleCss}>
+          <div className="container">
+            <div className="row">
+              <div className={mainHomePage.homeTypingRuleHeadCss}>
+                <small>For Beginners</small>
+                <h2>Learn <span>Proper Typing</span> First</h2>
+                <p>Not sure how to type correctly? Start with our beginner guide — learn finger placement, home row keys and build speed step by step</p>
+              </div>
+              <div className={`col-lg-6 col-md-12 ${mainHomePage.homeTypingRuleImageCss}`}>
+                  <Image src="/images/finger-place-keyboard-img.png" loading="lazy" alt="Typing Finger Keyboard" height={250} width={660}/>
+              </div>
+              <div className="col-lg-6 col-md-12">
+                <div className={mainHomePage.homeTypingRuleListCss}>
+                  <ul>
+                    <li>
+                      <small>1</small>
+                      <span>
+                        <h3>Home Row Position</h3>
+                        <p>Left hand on A-S-D-F, Right hand on J-K-L-; — yahi starting position hai. F aur J pe bumps hote hain bina dekhe feel karo.</p>
+                      </span>
+                    </li>
+                    <li>
+                      <small>2</small>
+                      <span>
+                        <h3>Har Ungli ka Kaam</h3>
+                        <p>Har finger sirf apne assigned keys dabati hai. Keyboard mat dekho — screen dekho. Shuru mein slow chalega, practice se speed aayegi.</p>
+                      </span>
+                    </li>
+                    <li>
+                      <small>3</small>
+                      <span>
+                        <h3>Accuracy Pehle, Speed Baad Mein</h3>
+                        <p>Pehle 95%+ accuracy achieve karo. Speed automatically aayegi. Galat typing ki aadat padh jaati hai jo baad mein mushkil se jaati hai.</p>
+                      </span>
+                    </li>
+                    <Link href={'/'}>Start Beginner Practice</Link>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
     </section>

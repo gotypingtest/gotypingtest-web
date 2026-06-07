@@ -24,7 +24,7 @@ function Header() {
 
             <div className={mainHeaderCss.registerbox}>
                 <ThemeToggle />
-                <Link className={mainHeaderCss.loginCss} href={'/'}><i className="fa-solid fa-arrow-right-to-bracket"></i>Login</Link>
+                <Link className={mainHeaderCss.loginCss} href={'/login'}><i className="fa-solid fa-arrow-right-to-bracket"></i>Login</Link>
                 <Link className={mainHeaderCss.registerCss} href={'/'}><i className="fa-solid fa-user-plus"></i>Register</Link>
             </div>
             </nav>

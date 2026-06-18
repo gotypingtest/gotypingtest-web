@@ -7,7 +7,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 15px 100px;
+  padding: 0px 100px;
   background: var(--navbar-bg);
   box-shadow: var(--navbar-shadow);
   height: 80px;
@@ -39,7 +39,7 @@
 }
 .headerPageCss .navbar .navlinks li a {
     transition: all 0.2s linear;
-    padding: 10px 20px;
+    padding: 30px 15px;
     color: var(--nav-link-color);
     font-size: 15px;
     font-weight: 600;
@@ -50,9 +50,44 @@
 .headerPageCss .navbar .navlinks li a:hover {
     color: #00C07A;
 }
-.nav.openSearch .navlinks a {
-  opacity: 0;
-  pointer-events: none;
+.headerPageCss .navbar .navlinks li.dropdownMainMenu button {
+  border: none;
+  background-color: transparent;
+  padding: 30px 15px;
+  font-size: 15px;
+}
+.headerPageCss .navbar .navlinks li.dropdownMainMenu button:hover {
+ color: #00C07A;
+}
+.headerPageCss .navbar .navlinks li.dropdownMainMenu {
+  position: relative;
+}
+.headerPageCss .navbar .navlinks li.dropdownMainMenu:hover .dropdownMenu {
+  display: block;
+}
+.headerPageCss .navbar .navlinks li.dropdownMainMenu .dropdownMenu {
+  display: none;
+  position: absolute;
+  background-color: #ffffff90;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  min-width: 190px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 0px 0px 10px 10px;
+  overflow: hidden;
+}
+.headerPageCss .navbar .navlinks li.dropdownMainMenu .dropdownMenu a {
+  color: black;
+  font-size: 13px;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.headerPageCss .navbar .navlinks li.dropdownMainMenu .dropdownMenu a:hover {
+  background-color: #fff;
+  color: #00C07A;
 }
 .headerPageCss .registerbox {
     display: flex;
@@ -122,6 +157,28 @@
   }
 }
 @media (max-width: 768.9px) {
+  .headerPageCss .navbar .navlinks{
+      padding-left: 0px;
+      text-align: center;
+  }
+  .headerPageCss .navbar .navlinks li,
+  .headerPageCss .navbar .navlinks li a {
+    display: block;
+    width: 100%;
+    padding: 0px;
+  }
+  .headerPageCss .navbar .navlinks li.dropdownMainMenu button {
+    padding: 0;
+  }
+.headerPageCss .navbar .navlinks li.dropdownMainMenu .dropdownMenu {
+  position: relative;
+  top: 20px;
+  width: 100%;
+}
+.headerPageCss .navbar .navlinks li.dropdownMainMenu .dropdownMenu a {text-align: center;}
+.headerPageCss .navbar .navlinks li:hover .dropdownMenu {
+    display: block;
+  }
 .headerPageCss .navbar a.websitelogo img {
   max-width: 230px;
   height: 40px;
@@ -289,38 +346,4 @@
 }
     .footerPageCss .footerLinks ul li a {font-size: 12px;}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

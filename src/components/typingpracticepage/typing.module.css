@@ -1,0 +1,154 @@
+.examsPageCss {
+  position: relative;
+  margin-top: 80px;
+}
+.examsPageCss .examsTopCss {
+    padding: 50px 0px;
+    background: #00c07a1a;
+}
+.examsPageCss .examsTopCss small,
+.examsPageCss .examsTypingCss .examsTypingHeadCss small,
+.examsPageCss .examsTypestCss .examsTypestHeadCss small
+ {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    max-width: 140px;
+    margin: auto;
+    border: 1px solid var(--theme-toggle-border);
+    background: var(--theme-toggle-bg);
+    color: var(--theme-toggle-color);
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+.examsPageCss .examsTopCss h1,
+.examsPageCss .examsTypingCss .examsTypingHeadCss h2,
+.examsPageCss .examsTypestCss .examsTypestHeadCss h2 {
+    font-size: 28px;
+    font-weight: 800;
+    text-align: center;
+    margin: 20px 0px;
+    letter-spacing: 1px;
+}
+.examsPageCss .examsTopCss h1 span,
+.examsPageCss .examsTypingCss .examsTypingHeadCss h2 span,
+.examsPageCss .examsTypestCss .examsTypestHeadCss h2 span {
+    color: #00C07A;
+}
+.examsPageCss .examsTopCss p,
+.examsPageCss .examsTypestCss .examsTypestHeadCss p {
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    line-height: 30px;
+    max-width: 700px;
+    margin: auto;
+}
+.examsPageCss .examsTopCss .examsTopButtonCss {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+}
+.examsPageCss .examsTopCss .examsTopButtonCss a {
+    background-color: #0076FF;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 30px;
+    box-shadow: 0px 3px 3px #d2f3ed;
+    &:hover {
+        color: #cfcfcf;
+    }
+}
+.examsPageCss .examsTypingCss {
+  /* background: #00c07a1a; */
+  padding: 50px 0;
+}
+.examsPageCss .examsTypingCss .examsTypingHeadCss p{
+  font-size: 14px;
+  text-align: center;
+}
+.examsPageCss .examsTypingCss ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 25px;
+}
+.examsPageCss .examsTypingCss ul li {
+  width: calc(100% / 4 - 30px);
+  background-color: #DEFFEF;
+  border: 1px solid #B9CBBC;
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    border: 1px solid #00c07a4d;
+    box-shadow: 0 0 20px #00c07a26;
+    transform: translateY(-4px);
+  }
+}
+.examsPageCss .examsTypingCss ul li small {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+  margin: auto;
+  background-color: #fff;
+  box-shadow: 0px 3px 10px #ccc;
+  overflow: hidden;
+}
+.examsPageCss .examsTypingCss ul li h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+  text-align: center;
+  margin: 0;
+}
+.examsPageCss .examsTypingCss ul li a,
+.examsPageCss .examsTypingCss .homeLearnTypingallButtonCss a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0076FF;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 30px;
+  box-shadow: 0px 3px 3px #838383;
+  &:hover {
+    color: #cfcfcf;
+  }
+}
+.examsPageCss .examsTypingCss .homeLearnTypingallButtonCss a {
+  max-width: 200px;
+  width: 100%;
+  margin: auto;
+  margin-top: 30px;
+  padding: 8px 35px;
+  letter-spacing: 1px;
+  font-size: 14px;
+  box-shadow: 0px 3px 3px #92929261;
+}
+.examsPageCss .examsTypestCss {
+    padding: 50px 0px;
+    background: #060E20;
+}
+.examsPageCss .examsTypestCss .examsTypestHeadCss h2 {
+  color: #dae2fd;
+}
+.examsPageCss .examsTypestCss .examsTypestHeadCss p {color: #cfcfcf;}

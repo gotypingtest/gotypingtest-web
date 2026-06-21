@@ -1,0 +1,349 @@
+.headerPageCss {
+    position: relative;
+}
+
+.headerPageCss .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0px 100px;
+  background: var(--navbar-bg);
+  box-shadow: var(--navbar-shadow);
+  height: 80px;
+  border-bottom: 1px solid var(--navbar-border);
+  z-index: 9;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.headerPageCss .navbar,
+.headerPageCss .navbar .navlinks {
+  display: flex;
+  align-items: center;
+}
+.headerPageCss .navbar {
+  justify-content: space-between;
+}
+.headerPageCss .navbar a.websitelogo {
+    color: var(--logo-color);
+    font-weight: 800;
+    font-size: 30px;
+    letter-spacing: -1px;
+    transition: color 0.25s ease;
+}
+.headerPageCss .navbar a.websitelogo span {
+    color: #00C07A;
+}
+.headerPageCss .navbar .navlinks {
+    list-style: none;
+    margin: 0px;
+}
+.headerPageCss .navbar .navlinks li a {
+    transition: all 0.2s linear;
+    padding: 30px 15px;
+    color: var(--nav-link-color);
+    font-size: 15px;
+    font-weight: 600;
+}
+.headerPageCss .navbar .navlinks li a.active {
+    color: #00C07A;
+}
+.headerPageCss .navbar .navlinks li a:hover {
+    color: #00C07A;
+}
+.headerPageCss .navbar .navlinks li.dropdownMainMenu button {
+  border: none;
+  background-color: transparent;
+  padding: 30px 15px;
+  font-size: 15px;
+}
+.headerPageCss .navbar .navlinks li.dropdownMainMenu button:hover {
+ color: #00C07A;
+}
+.headerPageCss .navbar .navlinks li.dropdownMainMenu {
+  position: relative;
+}
+.headerPageCss .navbar .navlinks li.dropdownMainMenu:hover .dropdownMenu {
+  display: block;
+}
+.headerPageCss .navbar .navlinks li.dropdownMainMenu .dropdownMenu {
+  display: none;
+  position: absolute;
+  background-color: #ffffff90;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  min-width: 190px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 0px 0px 10px 10px;
+  overflow: hidden;
+}
+.headerPageCss .navbar .navlinks li.dropdownMainMenu .dropdownMenu a {
+  color: black;
+  font-size: 13px;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.headerPageCss .navbar .navlinks li.dropdownMainMenu .dropdownMenu a:hover {
+  background-color: #fff;
+  color: #00C07A;
+}
+.headerPageCss .registerbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.headerPageCss .registerbox a {
+    padding: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 5px;
+}
+.headerPageCss .registerbox a i {
+    margin-right: 5px;
+}
+.headerPageCss .registerbox a.loginCss {
+    border: 1px solid #00C07A;
+    color: #00C07A;
+    background: #00c07a47;
+}
+.headerPageCss .registerbox a.registerCss {
+    border: 1px solid var(--register-border);
+    color: var(--register-text);
+    transition: border-color 0.25s ease, color 0.25s ease;
+}
+.headerPageCss .themeToggleBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid var(--theme-toggle-border);
+    border-radius: 5px;
+    background: var(--theme-toggle-bg);
+    color: var(--theme-toggle-color);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+.headerPageCss .themeToggleBtn:hover {
+    background: #00c07a33;
+    color: #00C07A;
+}
+
+.headerPageCss .navbar .navOpenBtn,
+.headerPageCss .navbar .navCloseBtn {
+  display: none;
+}
+
+
+/* responsive */
+@media  (max-width: 1199.9px) {
+
+}
+@media (max-width: 950.9px) {
+  .headerPageCss .navbar a.websitelogo img {
+      max-width: 230px;
+      height: 40px;
+  }
+  .headerPageCss .navbar {
+    padding: 15px 50px;
+  }
+.headerPageCss .navbar.search-box {
+    right: 100px;
+    max-width: 400px;
+  }
+}
+@media (max-width: 768.9px) {
+  .headerPageCss .navbar .navlinks{
+      padding-left: 0px;
+      text-align: center;
+  }
+  .headerPageCss .navbar .navlinks li,
+  .headerPageCss .navbar .navlinks li a {
+    display: block;
+    width: 100%;
+    padding: 0px;
+  }
+  .headerPageCss .navbar .navlinks li.dropdownMainMenu button {
+    padding: 0;
+  }
+.headerPageCss .navbar .navlinks li.dropdownMainMenu .dropdownMenu {
+  position: relative;
+  top: 20px;
+  width: 100%;
+}
+.headerPageCss .navbar .navlinks li.dropdownMainMenu .dropdownMenu a {text-align: center;}
+.headerPageCss .navbar .navlinks li:hover .dropdownMenu {
+    display: block;
+  }
+.headerPageCss .navbar a.websitelogo img {
+  max-width: 230px;
+  height: 40px;
+}
+ .headerPageCss .navbar .navOpenBtn,
+ .headerPageCss .navbar .navCloseBtn {
+    display: block;
+  }
+  .headerPageCss .navbar {
+    padding: 15px 20px;
+  }
+  /* .headerPageCss .navbar .wrappernavlinks{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-color: #aabaa9c7;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  } */
+  .headerPageCss .navbar .navlinks {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    max-width: 280px;
+    width: 100%;
+    padding-top: 100px;
+    row-gap: 30px;
+    flex-direction: column;
+   background: var(--background);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease-in-out;
+    z-index: 100;
+  }
+  .headerPageCss .openNav .navlinks {
+    left: 0;
+}
+  .headerPageCss .navbar .navOpenBtn {
+    color: #353842;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .headerPageCss .navbar .navCloseBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #353842;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .headerPageCss .navbar .search-box {
+    top: calc(100% + 10px);
+    max-width: calc(100% - 20px);
+    right: 50%;
+    transform: translateX(50%);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  .headerPageCss .themeToggleWrapper {
+        display: none;
+    }
+}
+
+
+
+
+
+.footerPageCss {
+    position: relative;
+    background: var(--footer-bg);
+    padding: 20px 0px;
+    transition: background-color 0.25s ease;
+}
+
+.footerPageCss a.websitelogo{
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--logo-color);
+    display: block;
+    margin-bottom: 20px;
+    transition: color 0.25s ease;
+}
+.footerPageCss a.websitelogo span{
+    color: #00C07A;
+}
+.footerPageCss p {
+    font-size: 14px;
+    letter-spacing: 0.6px;
+    line-height: 24px;
+    color: var(--footer-text);
+    transition: color 0.25s ease;
+}
+.footerPageCss .footerLinks h3 {
+    color: var(--logo-color);
+    font-size: 18px;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    transition: color 0.25s ease;
+}
+.footerPageCss .footerLinks h3::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 30%;
+    background: #00C07A;
+    border-radius: 5px;
+}
+.footerPageCss .footerLinks ul {
+    margin: 0px;
+    padding: 0;
+}
+.footerPageCss .footerLinks ul li {
+    list-style: none;
+    margin-bottom: 4px;
+}
+.footerPageCss .footerLinks ul li a {
+    display: block;
+    padding: 5px 0px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--footer-text);
+    transition: all 0.4s ease;
+}
+.footerPageCss .footerLinks ul li a:hover {
+    color: #00C07A;
+    letter-spacing: 1.5px;
+}
+.footerPageCss .footerLinks ul li a i {
+  font-size: 11px;
+  margin-right: 8px;
+}   
+.footerPageCss .websitefooterrights {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #cfcfcf5a;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+.footerPageCss .websitefooterrights a{
+  color: #00C07A;
+}
+.footerPageCss .websitefooterrights span:nth-of-type(2){
+  display: flex;
+  gap: 10px;
+}
+
+
+
+
+
+@media (max-width: 991.9px) {
+    .footerPageCss .footerLinks {margin-top: 30px;}
+    .footerPageCss .footerLinks h3 {font-size: 16px;}
+}
+@media (max-width:400px) {
+.headerPageCss .navbar a.websitelogo img {
+  max-width: 170px;
+  height: 30px;
+}
+    .footerPageCss .footerLinks ul li a {font-size: 12px;}
+}
+

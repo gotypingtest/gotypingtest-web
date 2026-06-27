@@ -1,0 +1,153 @@
+.mainLoginPageCss {
+    position: relative;
+    margin-top: 80px;
+}
+.mainLoginPageCss .mainLoginFormCss {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px 0px;
+}
+.mainLoginPageCss .mainLoginFormCss form {
+    max-width: 450px;
+    width: 100%;
+    background-color: #171F33;
+    padding: 35px 25px;
+    border-radius: 10px;
+    overflow: hidden;
+    border-top: 4px solid #00c07a;
+}
+.mainLoginPageCss .mainLoginFormCss form h1 {
+    font-size: 26px;
+    font-weight: 600;
+    text-align: center;
+    color: #dae2fd;
+}
+.mainLoginPageCss .mainLoginFormCss form p {
+    font-size: 12px;
+    text-align: center;
+    letter-spacing: 0.8px;
+    color: #cfcfcf;
+}
+.mainLoginPageCss .mainLoginFormCss form .loginFormGroup {
+    margin-top: 24px;
+}
+.mainLoginPageCss .mainLoginFormCss form .loginFormGroup label {
+    display: block;
+    font-size: 12px;
+    color: #cfcfcf;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 3px;
+}
+.mainLoginPageCss .mainLoginFormCss form .loginFormGroup span {
+    display: flex;
+    align-items: center;
+    background: #060E20;
+    border: 1px solid #3B4A3F;
+    border-radius: 6px;
+}
+.mainLoginPageCss .mainLoginFormCss form .loginFormGroup span i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cfcfcf;
+    height: 44px;
+    width: 46px;
+    font-size: 16px;
+}
+.mainLoginPageCss .mainLoginFormCss form .loginFormGroup span input {
+    height: 44px;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: 12px;
+}
+.mainLoginPageCss .mainLoginFormCss form .loginFormChecklist {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.mainLoginPageCss .mainLoginFormCss form .loginFormChecklist span {
+    display: flex;
+    gap: 5px;
+    font-size: 12px;
+    color: #cfcfcf;
+}
+.mainLoginPageCss .mainLoginFormCss form .loginFormChecklist a {
+    font-size: 12px;
+    color: #00E38B;
+}
+.mainLoginPageCss .mainLoginFormCss form .loginFormButtonCss button {
+    background-color: #00c07a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    color: #000;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 26px;
+    &:hover {
+        color: #fff;
+    }
+}
+.mainLoginPageCss .mainLoginFormCss form .mainLoginOtherCss {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+.mainLoginPageCss .mainLoginFormCss form .mainLoginOtherCss small {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #dae2fd;
+    letter-spacing: 0.8px;
+}
+.mainLoginPageCss .mainLoginFormCss form .mainLoginOtherCss button {
+    border: none;
+    outline: none;
+    background-color: #dae2fd5c;
+    padding: 5px;
+    border-radius: 6px;
+    &:hover {
+        background-color: #dae2fd;
+    }
+}
+.mainLoginPageCss .mainLoginFormCss form .mainLoginOtherCss span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #cfcfcf;
+}
+.mainLoginPageCss .mainLoginFormCss form .mainLoginOtherCss span a {
+    color: #00c07a;
+}
+.mainLoginPageCss .mainLoginFormCss form .loginFormGroup span input[type="number"]::-webkit-outer-spin-button,
+.mainLoginPageCss .mainLoginFormCss form .loginFormGroup span input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.mainLoginPageCss .mainLoginFormCss form .loginFormGroup span input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+@media (max-width:575.9px) {
+.mainLoginPageCss .mainLoginFormCss form h1 {
+    font-size: 18px;
+}
+.mainLoginPageCss .mainLoginFormCss form p {
+    font-size: 12px;
+    margin-bottom: 36px;
+}
+}

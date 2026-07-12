@@ -1,0 +1,201 @@
+.ExamsTableCss {
+  position: relative;
+  margin-top: 80px;
+}
+.ExamsTableCss .ExamsDetailsTop {
+  background: #e8fff9c9;
+  border:1px solid #c6dfff;
+  border-radius:20px;
+  padding:40px;
+  margin-top:40px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.ExamsTableCss .ExamsDetailsTop .ExamsLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+  margin: auto;
+  background-color: #fff;
+  box-shadow: 0px 3px 6px #337d2c;
+  overflow: hidden;
+  padding: 6px;
+  margin-bottom: 15px;
+}
+.ExamsTableCss .ExamsDetailsTop .ExamsLogo img {
+  width: 100%;
+  height: 100%;
+}
+.ExamsTableCss .ExamsDetailsTop h1 {
+  font-size: 24px;
+  font-weight:700;
+  color:#0c0154;
+  margin-bottom:20px;
+  text-align: center;
+}
+.ExamsTableCss .ExamsDetailsTop p {
+  font-size:15px;
+  line-height:1.8;
+  color: #000;
+  max-width:1000px;
+  text-align: justify;
+  margin:auto;
+  letter-spacing: 0.2px;
+}
+.ExamsTableCss .ExamsTestTable {
+  text-align:center;
+  margin:60px 0 30px;
+}
+.ExamsTableCss .ExamsTestTable h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color:#00b86b;
+  margin-bottom:10px;
+}
+.ExamsTableCss .ExamsTestTable p {
+  font-size: 15px;
+  line-height:1.8;
+  letter-spacing: 0.5px;
+  text-align: center;
+  max-width:1000px;
+  margin:auto;
+}
+.ExamsTableCss .ExamsTestTable span {
+  width:120px;
+  height: 4px;
+  background:#1e73ff;
+  display:block;
+  margin:15px auto 0;
+  border-radius:10px;
+}
+.ExamsTableCss .ExamsTestTable .tablewrapper{
+  background:#fff;
+  max-width:1100px;
+  margin:40px auto;
+  padding:10px;
+  border-radius:10px;
+  overflow-x:auto;
+}
+.ExamsTableCss .ExamsTestTable table{
+  width:100%;
+  min-width:990px;
+  border-collapse:collapse;
+  table-layout: fixed;
+}
+
+.ExamsTableCss .ExamsTestTable table thead{
+  background:#ccebcf;
+}
+
+.ExamsTableCss .ExamsTestTable table thead th {
+  padding:10px;
+  text-align:center;
+  font-size:16px;
+  color:#222;
+}
+.ExamsTableCss .ExamsTestTable table thead th.testTitle {
+   width: 100%;
+   min-width: 200px;
+}
+.ExamsTableCss .ExamsTestTable table tbody td {
+  padding:12px;
+  border:1px solid #ddd;
+  color:#666;
+  font-size: 15px;
+  font-weight: 600;
+}
+.ExamsTableCss .ExamsTestTable table tbody td .timebadge {
+  background:#e2eefd;
+  padding: 15px;
+  border-radius:30px;
+  font-size:13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 2px 5px #ccc;
+}
+.ExamsTableCss .ExamsTestTable table tbody td .langbadge {
+  background:#f1f1f1;
+  padding: 14px;
+  border-radius:20px;
+  font-size:13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ExamsTableCss .ExamsTestTable table tbody td .startbtn {
+  background:#0a9c52;
+  color:#fff;
+  border:none;
+  padding:11px 24px;
+  border-radius:30px;
+  cursor:pointer;
+  font-weight:600;
+  font-size: 12px;
+  border: 1px solid #00b86b;
+  &:hover {
+    background-color: transparent;
+    color: #00b86b;
+  }
+}
+.ExamsTableCss .ExamsTestTable table tbody td .premiumbtn {
+  background:#ffb400;
+  color:#111;
+  border:none;
+  padding:11px 24px;
+  border-radius:30px;
+  font-size: 13px;
+  font-weight:600;
+  border: 1px solid #ffb400;
+  &:hover {
+    background-color: transparent;
+    color: #ffb400;
+  }
+}
+.ExamsTableCss .ExamsTestTable table tbody .ReadMoreBttn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ExamsTableCss .ExamsTestTable table tbody .ReadMoreBttn span{
+  background:#1e73ff;
+  color:#fff;
+  border:none;
+  padding:22px;
+  border-radius:40px;
+  font-size:18px;
+  cursor:pointer;
+  font-weight:600;
+  width: 100%;
+  max-width: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width : 991.9px) {
+  .ExamsTableCss .ExamsTestTable table{
+    min-width:990px;
+  }
+}
+
+@media (max-width : 767.9px) {
+  .ExamsTableCss .ExamsDetailsTop {
+    padding: 16px;
+  }
+  .ExamsTableCss .ExamsDetailsTop .ExamsLogo {
+    height: 55px;
+    width: 55px;
+  }
+  .ExamsTableCss .ExamsDetailsTop h1,
+  .ExamsTableCss .ExamsTestTable h2 {
+    font-size: 18px;
+  }
+  .ExamsTableCss .ExamsTestTable p {
+    font-size: 14px;
+  }
+}
+

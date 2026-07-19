@@ -1,0 +1,155 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Leaderboard — GOTypingTest.com</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="navbar navbar-main navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><span class="brand-tyep">GOTyping</span><span class="brand-earn">Test.com</span></a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"><span class="navbar-toggler-icon" style="filter:invert(1)"></span></button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li><a class="nav-link" href="index.html">Home</a></li>
+        <li id="nav-li-contests"><a class="nav-link" href="contests.html">Contests</a></li>
+        <li><a class="nav-link" href="exams.html">Exams</a></li>
+        <li id="nav-li-leaderboard"><a class="nav-link active" href="leaderboard.html">Leaderboard</a></li>
+        <li><a class="nav-link" href="pricing.html">Pricing</a></li>
+      </ul>
+      <div class="d-flex gap-2" id="nav-auth"><a class="nav-link btn-login" href="login.html">Login</a><a class="nav-link btn-register" href="register.html">Register</a></div>
+      <div class="d-none align-items-center gap-2" id="nav-user">
+        <a href="wallet.html" style="color:var(--primary);text-decoration:none;font-size:0.85rem;font-weight:600"><i class="bi bi-wallet2"></i> ₹<span id="nav-balance">0</span></a>
+        <a href="dashboard.html"><div id="nav-initials" style="width:34px;height:34px;border-radius:50%;background:var(--primary);color:var(--bg-dark);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.78rem"></div></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="section-label">Leaderboard</span>
+    <h1 class="fw-bold" style="font-size:2rem">Top <span style="color:var(--primary)">Typists</span></h1>
+    <p style="color:var(--text-muted)">See who's dominating the typing arena</p>
+  </div>
+</section>
+
+<section class="py-4">
+  <div class="container">
+    <!-- Tabs -->
+    <div class="d-flex gap-2 mb-4 flex-wrap">
+      <button class="btn btn-green px-3 py-2 lb-tab" data-tab="weekly">This Week</button>
+      <button class="btn btn-outline-green px-3 py-2 lb-tab" data-tab="monthly">Monthly</button>
+      <button class="btn btn-outline-green px-3 py-2 lb-tab" data-tab="alltime">All Time</button>
+    </div>
+
+    <!-- Top 3 Podium -->
+    <div class="row g-3 mb-4 justify-content-center" id="podium"></div>
+
+    <!-- Full Table -->
+    <div class="card-dark">
+      <div class="d-flex justify-content-between align-items-center p-3 border-bottom" style="border-color:var(--border)!important">
+        <h6 class="fw-600 mb-0">Full Rankings</h6>
+        <select class="input-dark" style="width:auto;padding:6px 12px;font-size:0.82rem">
+          <option>English</option><option>Hindi</option><option>All Languages</option>
+        </select>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-dark-custom mb-0">
+          <thead><tr><th>Rank</th><th>Player</th><th>WPM</th><th>Accuracy</th><th>Score</th><th>Badge</th></tr></thead>
+          <tbody id="lb-table"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer-main mt-4"><div class="container"><div class="footer-bottom text-center">© 2024 GOTypingTest. All rights reserved.</div></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/firebase-service.js"></script>
+<script src="js/main.js"></script>
+<script>
+(async () => {
+await Auth.init();
+const me = Auth.getUser();
+
+document.getElementById('nav-balance').textContent = Wallet.getBalance().toFixed(0);
+updateNavForAuth();
+
+let LEADERBOARD_DATA = [];
+try {
+  const raw = await DB.getLeaderboard(20);
+  LEADERBOARD_DATA = raw.map((r, i) => ({
+    rank: i + 1,
+    name: r.userName || 'Anonymous',
+    wpm: r.wpm,
+    accuracy: r.accuracy,
+    score: Math.round((r.wpm || 0) * (r.accuracy || 0) / 100 * 10),
+    isYou: !!(me && r.userId === me.id)
+  }));
+} catch (err) { console.error(err); }
+
+if (!LEADERBOARD_DATA.length) {
+  document.getElementById('podium').innerHTML = '<div class="col-12 text-center py-4" style="color:var(--text-muted)">Abhi tak koi results nahi hain. Sabse pehle test do!</div>';
+  document.getElementById('lb-table').innerHTML = '';
+  return;
+}
+
+const podiumEl = document.getElementById('podium');
+const top3 = LEADERBOARD_DATA.slice(0,3);
+const podiumOrder = [1,0,2].filter(i => top3[i]);
+podiumOrder.forEach(i => {
+  const p = top3[i];
+  const heights = ['80px','100px','60px'];
+  podiumEl.innerHTML += `
+    <div class="col-4 text-center">
+      <div style="margin-bottom:10px">
+        <div style="width:56px;height:56px;border-radius:50%;background:${avatarColor(p.name)};margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;color:var(--bg-dark)">${initials(p.name)}</div>
+        <div style="font-weight:600;font-size:0.85rem">${p.name}</div>
+        <div style="color:var(--primary);font-weight:700">${p.wpm} WPM</div>
+      </div>
+      <div style="background:${i===0?'var(--gold)':i===1?'#9CA3AF':'#CD7F32'};height:${heights[i=== 0?1:i===1?0:2]};border-radius:8px 8px 0 0;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:${i===0?'#000':'white'}">
+        ${i===0?'🥇':i===1?'🥈':'🥉'}
+      </div>
+    </div>`;
+});
+
+const tbody = document.getElementById('lb-table');
+LEADERBOARD_DATA.forEach(p => {
+  const badges = { 1:'👑 Champion', 2:'⚡ Expert', 3:'🔥 Pro', 5:'🌟 Rising' };
+  tbody.innerHTML += `
+    <tr ${p.isYou?'style="background:rgba(0,192,122,0.04)"':''}>
+      <td><span style="font-weight:700;color:${p.rank<=3?'var(--gold)':'var(--text-muted)'}">${p.rank<=3?['🥇','🥈','🥉'][p.rank-1]:p.rank}</span></td>
+      <td><div style="display:flex;align-items:center;gap:10px"><div style="width:32px;height:32px;border-radius:50%;background:${avatarColor(p.name)};display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:700;color:var(--bg-dark)">${initials(p.name)}</div><span style="font-weight:500">${p.name}${p.isYou?' <span style="color:var(--primary);font-size:0.75rem">(You)</span>':''}</span></div></td>
+      <td style="color:var(--primary);font-weight:700;font-family:var(--font-alt)">${p.wpm}</td>
+      <td style="color:var(--text-muted)">${p.accuracy}%</td>
+      <td style="font-family:var(--font-alt);font-weight:600">${p.score}</td>
+      <td>${badges[p.rank]||''}</td>
+    </tr>`;
+});
+
+document.querySelectorAll('.lb-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.lb-tab').forEach(b=>{b.classList.remove('btn-green');b.classList.add('btn-outline-green');});
+    btn.classList.add('btn-green'); btn.classList.remove('btn-outline-green');
+  });
+});
+
+})();
+</script>
+</body>
+</html>

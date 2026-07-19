@@ -1,0 +1,145 @@
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Exams — GOTypingTest.com</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="navbar navbar-main navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><span class="brand-tyep">GOTyping</span><span class="brand-earn">Test.com</span></a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"><span class="navbar-toggler-icon" style="filter:invert(1)"></span></button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li><a class="nav-link" href="index.html">Home</a></li>
+        <li id="nav-li-contests"><a class="nav-link" href="contests.html">Contests</a></li>
+        <li><a class="nav-link active" href="exams.html">Exams</a></li>
+        <li id="nav-li-leaderboard"><a class="nav-link" href="leaderboard.html">Leaderboard</a></li>
+        <li><a class="nav-link" href="pricing.html">Pricing</a></li>
+      </ul>
+      <div class="d-flex gap-2" id="nav-auth"><a class="nav-link btn-login" href="login.html">Login</a><a class="nav-link btn-register" href="register.html">Register</a></div>
+      <div class="d-none align-items-center gap-2" id="nav-user">
+        <a href="wallet.html" style="color:var(--primary);text-decoration:none;font-size:0.85rem;font-weight:600"><i class="bi bi-wallet2"></i> ₹<span id="nav-balance">0</span></a>
+        <a href="dashboard.html"><div id="nav-initials" style="width:34px;height:34px;border-radius:50%;background:var(--primary);color:var(--bg-dark);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.78rem"></div></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="background:linear-gradient(135deg,#0d1b2e,#0a0e1a);padding:60px 0 40px;border-bottom:1px solid var(--border)">
+  <div class="container text-center">
+    <span class="section-label">Exams</span>
+    <h1 class="fw-bold" style="font-size:2rem">Master Typing for <span style="color:var(--primary)">Competitive Exams</span></h1>
+    <p style="color:var(--text-muted);max-width:500px;margin:10px auto 24px">Improve your typing speed and accuracy with our specialized practice tests designed for various government exams.</p>
+    <a href="exam-test.html" class="btn btn-green px-4 py-2"><i class="bi bi-play-fill me-1"></i>Start Practicing Now</a>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+    <h4 class="fw-700 mb-2">Top Typing Exams</h4>
+    <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:28px">Practice for these popular exams and improve your typing speed</p>
+    <div style="position:relative;max-width:400px;margin-bottom:28px">
+      <i class="bi bi-search" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-dim)"></i>
+      <input type="text" class="input-dark" style="padding-left:36px" placeholder="Search exams e.g. SSC, NTPC, JSA..." id="exam-search">
+    </div>
+    <div class="row g-3" id="exam-grid"></div>
+  </div>
+</section>
+
+<!-- Detail Modal -->
+<div class="modal fade modal-dark" id="examModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title fw-700" id="examModalTitle"></h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body" id="examModalBody"></div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer-main mt-4"><div class="container"><div class="footer-bottom text-center">© 2024 GOTypingTest.com. All rights reserved.</div></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/firebase-service.js"></script>
+<script src="js/main.js"></script>
+<script>
+const EXAMS = [
+  { id:1,  name:'SSC CHSL Typing',    short:'SSC CHSL',    color:'#c0392b', req:'35 WPM English', reqWpm:35, lang:'English', duration:10, tests:18, emoji:'🔴' },
+  { id:2,  name:'RRB NTPC Typing',    short:'RRB NTPC',    color:'#e74c3c', req:'30 WPM English', reqWpm:30, lang:'English', duration:10, tests:15, emoji:'🚂' },
+  { id:3,  name:'DSSSB JSA Typing',   short:'DSSSB JSA',   color:'#e91e63', req:'35 WPM English', reqWpm:35, lang:'English', duration:10, tests:12, emoji:'🏛️' },
+  { id:4,  name:'KVS JSA Typing',     short:'KVS JSA',     color:'#9c27b0', req:'35 WPM English', reqWpm:35, lang:'English', duration:10, tests:14, emoji:'🏫' },
+  { id:5,  name:'EMRS JSA Typing',    short:'EMRS JSA',    color:'#673ab7', req:'35 WPM English', reqWpm:35, lang:'English', duration:10, tests:10, emoji:'📚' },
+  { id:6,  name:'BSF HCM Typing',     short:'BSF HCM',     color:'#3f51b5', req:'35 WPM English', reqWpm:35, lang:'English', duration:10, tests:12, emoji:'🪖' },
+  { id:7,  name:'Delhi Police Typing',short:'Delhi Police', color:'#1565c0', req:'35 WPM English', reqWpm:35, lang:'English', duration:10, tests:16, emoji:'👮' },
+  { id:8,  name:'RSSB LDC Typing',    short:'RSSB LDC',    color:'#006064', req:'30 WPM Hindi',   reqWpm:30, lang:'Hindi',   duration:10, tests:10, emoji:'📋' },
+  { id:9,  name:'SSC CGL Typing',     short:'SSC CGL',     color:'#2e7d32', req:'35 WPM English', reqWpm:35, lang:'English', duration:15, tests:18, emoji:'📊' },
+  { id:10, name:'UPSC Steno Typing',  short:'UPSC Steno',  color:'#e65100', req:'100 WPM Steno',  reqWpm:100,lang:'English', duration:10, tests:8,  emoji:'🇮🇳' },
+  { id:11, name:'UP Police Typing',   short:'UP Police',   color:'#4e342e', req:'25 WPM Hindi',   reqWpm:25, lang:'Hindi',   duration:10, tests:12, emoji:'🚔' },
+  { id:12, name:'HP Clerk Typing',    short:'HP Clerk',    color:'#37474f', req:'30 WPM Hindi',   reqWpm:30, lang:'Hindi',   duration:10, tests:8,  emoji:'🏔️' },
+];
+
+function renderExams(query = '') {
+  const grid = document.getElementById('exam-grid');
+  const filtered = EXAMS.filter(e => !query || e.name.toLowerCase().includes(query.toLowerCase()) || e.short.toLowerCase().includes(query.toLowerCase()));
+  grid.innerHTML = filtered.map(e => `
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="exam-card" onclick="openExam(${e.id})">
+        <div class="exam-logo" style="background:${e.color}15;border:2px solid ${e.color}30">
+          <span style="font-size:1.6rem">${e.emoji}</span>
+        </div>
+        <div class="exam-name">${e.short}</div>
+        <span class="badge-free">Practice Now</span>
+      </div>
+    </div>`).join('');
+}
+
+function openExam(id) {
+  const exam = EXAMS.find(e => e.id === id);
+  const isPremium = (i) => i > 7;
+  document.getElementById('examModalTitle').textContent = exam.name;
+  document.getElementById('examModalBody').innerHTML = `
+    <div style="background:var(--bg-card2);border-radius:10px;padding:16px;margin-bottom:16px">
+      <div class="fw-700 mb-1">${exam.name}</div>
+      <p style="color:var(--text-muted);font-size:0.85rem;margin:0">Required speed: ${exam.req}. Duration: ${exam.duration} minutes. Computer-based test.</p>
+    </div>
+    <h6 class="fw-600 mb-3" style="color:var(--primary)">Practice Passages</h6>
+    <div class="table-responsive">
+      <table class="table table-dark-custom">
+        <thead><tr><th>Practice Test</th><th>Duration</th><th>Language</th><th>Action</th></tr></thead>
+        <tbody>
+          ${Array.from({length: exam.tests}, (_,i) => `
+            <tr>
+              <td>${exam.short} Typing Test ${i+1}</td>
+              <td><span style="background:var(--bg-card2);border:1px solid var(--border);border-radius:20px;padding:2px 10px;font-size:0.78rem;color:var(--text-muted)"><i class="bi bi-clock me-1"></i>${exam.duration} Minutes</span></td>
+              <td style="color:var(--text-muted);font-size:0.85rem">${exam.lang}</td>
+              <td>${isPremium(i) ?
+                `<button class="btn py-1 px-3" style="background:rgba(245,158,11,0.12);color:var(--gold);border:1px solid rgba(245,158,11,0.3);border-radius:6px;font-size:0.8rem" onclick="window.location.href='pricing.html'"><i class="bi bi-lock-fill me-1"></i>Premium</button>` :
+                `<button class="btn btn-green py-1 px-3" style="font-size:0.82rem" onclick="window.location.href='exam-test.html?exam='+encodeURIComponent('${exam.name}')+'&short='+encodeURIComponent('${exam.short}')+'&lang=${exam.lang}&duration=${exam.duration}&wpm=${exam.reqWpm}&test='+(${i}+1)"><i class="bi bi-play-fill me-1"></i>Start Test</button>`
+              }</td>
+            </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>`;
+  new bootstrap.Modal(document.getElementById('examModal')).show();
+}
+
+document.getElementById('exam-search').addEventListener('input', e => renderExams(e.target.value));
+renderExams();
+</script>
+</body>
+</html>

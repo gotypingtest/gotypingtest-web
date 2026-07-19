@@ -1,0 +1,220 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contests — GOTypingTest.com</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="navbar navbar-main navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><span class="brand-tyep">GOTyping</span><span class="brand-earn">Test.com</span></a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"><span class="navbar-toggler-icon" style="filter:invert(1)"></span></button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li><a class="nav-link" href="index.html">Home</a></li>
+        <li id="nav-li-contests"><a class="nav-link active" href="contests.html">Contests</a></li>
+        <li><a class="nav-link" href="exams.html">Exams</a></li>
+        <li id="nav-li-leaderboard"><a class="nav-link" href="leaderboard.html">Leaderboard</a></li>
+        <li><a class="nav-link" href="pricing.html">Pricing</a></li>
+      </ul>
+      <div class="d-flex gap-2 mt-2 mt-lg-0" id="nav-auth">
+        <a class="nav-link btn-login" href="login.html">Login</a>
+        <a class="nav-link btn-register" href="register.html">Register</a>
+      </div>
+      <div class="d-none align-items-center gap-2" id="nav-user">
+        <a href="wallet.html" style="color:var(--primary);text-decoration:none;font-size:0.85rem;font-weight:600"><i class="bi bi-wallet2"></i> ₹<span id="nav-balance">0</span></a>
+        <a href="dashboard.html" style="display:flex;align-items:center;gap:8px;text-decoration:none">
+          <div id="nav-initials" style="width:34px;height:34px;border-radius:50%;background:var(--primary);color:var(--bg-dark);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.78rem"></div>
+          <span style="color:var(--text-white);font-size:0.9rem;font-weight:500" id="nav-name"></span>
+        </a>
+        <button onclick="Auth.logout()" class="btn btn-sm" style="border:1px solid var(--border);color:var(--text-muted);border-radius:6px;background:transparent">Logout</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="section-label">Contests</span>
+    <h1 class="fw-bold" style="font-size:2.2rem">Browse <span style="color:var(--primary)">All Contests</span></h1>
+    <p style="color:var(--text-muted)">Join live contests and win real cash rewards</p>
+  </div>
+</section>
+
+<section class="py-4">
+  <div class="container">
+    <!-- Filters -->
+    <div class="card-dark p-3 mb-4 d-flex flex-wrap gap-3 align-items-center">
+      <div class="d-flex gap-2">
+        <button class="btn btn-green px-3 py-2 filter-btn active" data-filter="all">All</button>
+        <button class="btn btn-outline-green px-3 py-2 filter-btn" data-filter="live">Live</button>
+        <button class="btn btn-outline-green px-3 py-2 filter-btn" data-filter="upcoming">Upcoming</button>
+        <button class="btn btn-outline-green px-3 py-2 filter-btn" data-filter="completed">Completed</button>
+      </div>
+      <div class="ms-auto d-flex gap-2">
+        <select class="input-dark" style="width:auto;padding:8px 12px;font-size:0.85rem" id="sort-select">
+          <option value="prize">Sort: Prize Pool</option>
+          <option value="entry">Sort: Entry Fee</option>
+          <option value="players">Sort: Players</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="row g-3" id="contest-grid"></div>
+  </div>
+</section>
+
+<!-- Join Confirm Modal -->
+<div class="modal fade modal-dark" id="joinModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title fw-700">Join Contest</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="joinModalBody"></div>
+      <div class="modal-footer border-0 pt-0">
+        <button type="button" class="btn" style="background:var(--bg-card2);color:var(--text-muted);border:1px solid var(--border);border-radius:8px;padding:8px 20px" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-green px-4 py-2" id="confirmJoinBtn">Confirm & Join</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer-main mt-4">
+  <div class="container"><div class="footer-bottom text-center">© 2024 GOTypingTest. All rights reserved.</div></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/firebase-service.js"></script>
+<script src="js/main.js"></script>
+<script>
+let currentFilter = 'all';
+let currentContest = null;
+let CONTESTS = [];
+
+async function loadContests() {
+  document.getElementById('contest-grid').innerHTML = '<div class="col-12 text-center py-5" style="color:var(--text-muted)">Loading contests...</div>';
+  try {
+    CONTESTS = await DB.getContests();
+  } catch (err) {
+    console.error(err);
+    document.getElementById('contest-grid').innerHTML = '<div class="col-12 text-center py-5" style="color:var(--danger)">Contests load nahi ho paaye. Firebase config check karo.</div>';
+    return;
+  }
+  renderContests();
+}
+
+function renderContests() {
+  const grid = document.getElementById('contest-grid');
+  let filtered = currentFilter === 'all' ? CONTESTS : CONTESTS.filter(c => c.status === currentFilter);
+  const sort = document.getElementById('sort-select').value;
+  if (sort === 'prize') filtered.sort((a,b) => b.prize - a.prize);
+  if (sort === 'entry') filtered.sort((a,b) => a.entry - b.entry);
+  if (sort === 'players') filtered.sort((a,b) => b.participants - a.participants);
+
+  if (!filtered.length) { grid.innerHTML = '<div class="col-12 text-center py-5" style="color:var(--text-muted)">No contests found</div>'; return; }
+
+  grid.innerHTML = filtered.map(c => `
+    <div class="col-md-6 col-lg-4">
+      <div class="contest-card" onclick="window.location.href='contest-detail.html?id=${encodeURIComponent(c.id)}'">
+        <div class="d-flex justify-content-between align-items-start mb-3">
+          <span class="${c.status==='live'?'badge-live':c.status==='upcoming'?'badge-upcoming':'badge-completed'}">${c.status==='live'?'<span class="live-dot"></span>LIVE':c.status==='upcoming'?'⏰ UPCOMING':'✓ COMPLETED'}</span>
+          <span style="color:var(--text-dim);font-size:0.78rem"><i class="bi bi-clock me-1"></i>${c.duration} min</span>
+        </div>
+        <h5 class="fw-700 mb-1" style="color:var(--text-white)">${c.name}</h5>
+        <div style="color:var(--text-muted);font-size:0.82rem;margin-bottom:12px"><i class="bi bi-translate me-1"></i>${c.lang}</div>
+        <div style="margin-bottom:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <span style="color:var(--gold);font-weight:800;font-family:var(--font-alt);font-size:1.2rem">₹${c.prize.toLocaleString()}</span>
+            <span style="color:var(--primary);font-weight:700">Entry ₹${c.entry}</span>
+          </div>
+          <div style="display:flex;gap:4px;margin-bottom:8px">
+            <div style="flex:1;background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);border-radius:6px;padding:5px 3px;text-align:center"><div style="font-size:0.68rem;color:#FFD700">🥇 1st</div><div style="font-size:0.78rem;font-weight:700;color:#FFD700">₹${Math.floor(c.prize*0.5)}</div></div>
+            <div style="flex:1;background:rgba(192,192,192,.08);border:1px solid rgba(192,192,192,.2);border-radius:6px;padding:5px 3px;text-align:center"><div style="font-size:0.68rem;color:#C0C0C0">🥈 2nd</div><div style="font-size:0.78rem;font-weight:700;color:#C0C0C0">₹${Math.floor(c.prize*0.3)}</div></div>
+            <div style="flex:1;background:rgba(205,127,50,.08);border:1px solid rgba(205,127,50,.2);border-radius:6px;padding:5px 3px;text-align:center"><div style="font-size:0.68rem;color:#CD7F32">🥉 3rd</div><div style="font-size:0.78rem;font-weight:700;color:#CD7F32">₹${Math.floor(c.prize*0.2)}</div></div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <small style="color:var(--text-muted)">${c.participants}/${c.maxParticipants} players</small>
+          <small style="color:var(--text-muted)">${c.status==='upcoming'?'Starts in '+timeUntil(c.startTime):c.status==='live'?'Live now':''}</small>
+        </div>
+        <div class="progress-dark mb-3"><div class="progress-bar" style="width:${(c.participants/c.maxParticipants*100).toFixed(0)}%"></div></div>
+        ${c.status !== 'completed' ? `<button class="btn btn-green w-100 py-2" onclick="event.stopPropagation();openJoin('${c.id}')">${c.status==='live'?'Join Now':'Register'}</button>` : `<button class="btn w-100 py-2" style="background:var(--bg-card2);color:var(--text-muted);border:1px solid var(--border);border-radius:8px" onclick="event.stopPropagation();window.location.href='leaderboard.html?contest=${encodeURIComponent(c.id)}'">View Results</button>`}
+      </div>
+    </div>`).join('');
+}
+
+function openJoin(id) {
+  if (!Auth.isLoggedIn()) { window.location.href = 'login.html'; return; }
+  currentContest = CONTESTS.find(c => c.id === id);
+  const bal = Wallet.getBalance();
+  document.getElementById('joinModalBody').innerHTML = `
+    <div style="background:var(--bg-card2);border-radius:10px;padding:16px;margin-bottom:16px">
+      <div class="fw-700 mb-1" style="font-size:1.1rem">${currentContest.name}</div>
+      <div style="color:var(--text-muted);font-size:0.85rem"><i class="bi bi-clock me-1"></i>${currentContest.duration} min · ${currentContest.lang}</div>
+    </div>
+    <div class="d-flex justify-content-between mb-2"><span style="color:var(--text-muted)">Entry Fee</span><span style="color:var(--primary);font-weight:700">₹${currentContest.entry}</span></div>
+    <div class="d-flex justify-content-between mb-2"><span style="color:var(--text-muted)">Prize Pool</span><span style="color:var(--gold);font-weight:700">₹${currentContest.prize.toLocaleString()}</span></div>
+    <div class="d-flex justify-content-between mb-3"><span style="color:var(--text-muted)">Your Balance</span><span style="color:${bal>=currentContest.entry?'var(--success)':'var(--danger)'};font-weight:700">₹${bal.toFixed(2)}</span></div>
+    <hr style="border-color:var(--border)">
+    ${bal < currentContest.entry ? `<div style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:8px;padding:12px;color:var(--danger);font-size:0.85rem;margin-bottom:12px"><i class="bi bi-exclamation-triangle me-2"></i>Insufficient balance. <a href="wallet.html" style="color:var(--danger);font-weight:600">Add Money →</a></div>` : ''}`;
+  
+  const btn = document.getElementById('confirmJoinBtn');
+  if (bal < currentContest.entry) { btn.disabled = true; btn.style.opacity = '0.5'; } 
+  else { btn.disabled = false; btn.style.opacity = '1'; }
+  new bootstrap.Modal(document.getElementById('joinModal')).show();
+}
+
+document.getElementById('confirmJoinBtn').addEventListener('click', async () => {
+  if (!currentContest) return;
+  const btn = document.getElementById('confirmJoinBtn');
+  btn.disabled = true; btn.textContent = 'Joining...';
+  try {
+    const ok = await Wallet.debit(currentContest.entry, `Entry: ${currentContest.name}`);
+    if (!ok) { showToast('Insufficient balance', 'danger'); btn.disabled = false; btn.textContent = 'Confirm & Join'; return; }
+    await DB.joinContest(currentContest.id, Auth.getUser().id);
+    bootstrap.Modal.getInstance(document.getElementById('joinModal')).hide();
+    showToast(`Joined ${currentContest.name}! ₹${currentContest.entry} deducted.`);
+    setTimeout(() => window.location.href = `typing-test.html?contest=${encodeURIComponent(currentContest.id)}`, 1000);
+  } catch (err) {
+    console.error(err);
+    showToast('Kuch gadbad ho gayi, dobara try karo', 'danger');
+    btn.disabled = false; btn.textContent = 'Confirm & Join';
+  }
+});
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('active','btn-green'); b.classList.add('btn-outline-green'); });
+    btn.classList.add('active','btn-green'); btn.classList.remove('btn-outline-green');
+    currentFilter = btn.dataset.filter;
+    renderContests();
+  });
+});
+
+document.getElementById('sort-select').addEventListener('change', renderContests);
+
+(async () => {
+  await Auth.init();
+  document.getElementById('nav-balance').textContent = Wallet.getBalance().toFixed(0);
+  updateNavForAuth();
+  await loadContests();
+})();
+</script>
+</body>
+</html>
+

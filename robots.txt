@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard.html
+Disallow: /wallet.html
+Disallow: /contest-detail.html
+Disallow: /typing-test.html
+Disallow: /exam-test.html
+Disallow: /exam-testolde.html
+
+Sitemap: https://gotypingtest.com/sitemap.xml
